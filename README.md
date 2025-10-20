@@ -31,6 +31,7 @@ Tool addon for Godot 4, this addon allow split the script editor window.
 </p>
 
 New split system compatible for **Godot 4.5**
+
 You can now create as many columns as you want in each row you create to customize your own experience.
 
 * You can easily split or merge it using the toolbar.
