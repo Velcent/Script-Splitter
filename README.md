@@ -25,6 +25,18 @@ Tool addon for Godot 4, this addon allow split the script editor window.
 
 # NEWS [↑](#table-of-contents)
 
+### V0.5
+<p align="center">
+  <img width="128" height="128" src="https://github.com/CodeNameTwister/Misc/blob/main/media/ico_gdsp.svg?raw=true">
+</p>
+
+New split system compatible for **Godot 4.5**
+You can now create as many columns as you want in each row you create to customize your own experience.
+
+* You can easily split or merge it using the toolbar.
+* Remember that you can also disable the new tab behavior in the plugin/script_splitter project options and set "use old tabs"
+
+
 ### V0.4
 <p align="center">
   <img width="128" height="128" src="https://github.com/CodeNameTwister/Misc/blob/main/media/ico_gdsp4.png?raw=true">
