@@ -224,7 +224,6 @@ func execute(value : Variant = null) -> bool:
 					for x : ToolDB.MickeyTool in _tool_db.get_tools():
 						if x.has(container):
 							var y : Node = (_manager._base_container._editor_container.get_parent())
-							#for y : Node in Engine.get_main_loop().get_nodes_in_group(&"__SCRIPT_SPLITTER__"):
 							var new_window : Window = EDITOR.instantiate()
 							y.add_child(new_window)
 							
