@@ -1,4 +1,7 @@
-# Script-Spliter
+>[!WARNING]
+>For Godot version >= 4.5 use the Script Splitter v0.5 or later versions.
+
+### Script-Spliter (Old Version)
 Tool addon for Godot 4, this addon allow split the script editor window.
 
 [![Godot Engine 4.3](https://img.shields.io/badge/Godot_Engine-4.x-blue)](https://godotengine.org/) ![ToolHack](https://img.shields.io/badge/Tool-Addon-green) ![Copyrights License](https://img.shields.io/badge/License-MIT-blue)
