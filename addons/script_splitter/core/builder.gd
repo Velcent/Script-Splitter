@@ -29,6 +29,9 @@ var _item_list : ItemList = null:
 		return _item_list
 #endregion
 
+func get_editor_manager() -> EditorManager:
+	return _editor_manager
+
 func handle(id : StringName) -> void:
 	_editor_manager.io.execute(id)
 	

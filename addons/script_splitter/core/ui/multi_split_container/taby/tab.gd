@@ -68,9 +68,9 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 				if idx >= 0:
 					var _node : Node = data.owner
 					var lft : bool = false
-					if get_global_mouse_position().x <= get_global_rect().get_center().x:
+					if owner.get_global_mouse_position().x <= owner.get_global_rect().get_center().x:
 						lft = true
-					
+						
 					var root : Node = _node
 					for __ : int in range(3):
 						root = root.get_parent()
@@ -90,7 +90,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 							
 					out_drag()
 	
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	if data is Node:
 		if data == self:
 			return false
@@ -104,14 +104,14 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 			if line:
 				var rct : Rect2 = owner.get_global_rect()
 				line.update(self)
-				if at_position.x <= size.x * 0.5:
+				if owner.get_global_mouse_position().x <= owner.get_global_rect().get_center().x:
 					line.global_position = rct.position
 				else:
-					line.global_position = Vector2(rct.end.x, rct.position.y)
+					line.global_position = Vector2(rct.end.x, rct.position.y) - Vector2(line.size.x * 1.5, 0.0)
 				
 				var style : StyleBoxLine = line.get(&"theme_override_styles/separator")
 				style.set(&"thickness",size.y)
-				style.set(&"color",owner.color_rect.color)
+				style.set(&"color",data.get_selected_color())
 			return true
 	return false
 
@@ -133,13 +133,7 @@ func reset() -> void:
 					if x is TabContainer:
 						parent.emit_signal(&"out_dragging",x.get_tab_bar())
 						return
-				
-			
-
-func _init() -> void:
-	if is_node_ready():
-		_ready()
-	
+							
 func _enter_tree() -> void:
 	if !is_in_group(&"__SPLITER_TAB__"):
 		add_to_group(&"__SPLITER_TAB__")
@@ -220,3 +214,6 @@ func _on_input(e : InputEvent) -> void:
 								return
 		#elif e.button_index == MOUSE_BUTTON_RIGHT:
 			#pressed.emit()
+
+func get_selected_color() -> Color:
+	return owner.get_selected_color()

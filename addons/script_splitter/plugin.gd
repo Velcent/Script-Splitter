@@ -88,3 +88,6 @@ func _input(event: InputEvent) -> void:
 
 func _io_call(id : StringName) -> void:
 	builder.handle(id)
+
+func move_item_container(container : TabContainer, from : int, to : int) -> void:
+	builder.get_editor_manager().move_item_container(container, from, to)

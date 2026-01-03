@@ -15,6 +15,7 @@ func _ready() -> void:
 	visible = false
 	z_index = RenderingServer.CANVAS_ITEM_Z_MAX - 1
 	z_as_relative = false
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_process(_ref != null)
 
 func update(ref : Control) -> void:
@@ -35,5 +36,6 @@ func _process(delta: float) -> void:
 	if is_instance_valid(_ref) and is_inside_tree():
 		if _ref.get_global_rect().has_point(get_global_mouse_position()):
 			return
+			
 	if !is_queued_for_deletion():
 		queue_free()
