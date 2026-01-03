@@ -102,7 +102,7 @@ func _init(base_container : BaseContainer, base_list : BaseList) -> void:
 #	
 	_base_list.updated.connect(update_all_metadata)
 	_base_list.item_selected.connect(_on_item_selected)
-	_base_list.move_item.connect(move_item_container)
+	_base_list.move_item.connect(_move_item_list)
 	_base_container.update.connect(update_metadata)
 	_base_container.focus_by_tab.connect(_on_focus_tab)
 	_base_container.remove_by_tab.connect(_on_remove_tab)
@@ -370,16 +370,24 @@ func right_tab_close(value : Variant) -> void:
 func others_tab_close(value : Variant) -> void:
 	_user_tab_close.execute([value, 0])
 
+func _move_item_list(from : int, to : int) -> void:
+	move_item_container(null, from, to)
+
 func move_item_container(container : TabContainer, from : int, to : int) -> void:
 	var vfrom : int = -1
 	var vto : int = -1
-	for x : ToolDB.MickeyTool in _tool_db.get_tools():
-		if x.get_root() == container:
-			var _idx : int = x.get_control().get_index()
-			if _idx == from:
-				vfrom = x.get_index()
-			elif _idx == to:
-				vto = x.get_index()
+	
+	if container == null:
+		vfrom = from
+		vto = to
+	else:
+		for x : ToolDB.MickeyTool in _tool_db.get_tools():
+			if x.get_root() == container:
+				var _idx : int = x.get_control().get_index()
+				if _idx == from:
+					vfrom = x.get_index()
+				elif _idx == to:
+					vto = x.get_index()
 	
 	if vfrom == -1 or vto == -1:
 		return
