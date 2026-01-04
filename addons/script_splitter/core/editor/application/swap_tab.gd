@@ -9,6 +9,7 @@ extends "res://addons/script_splitter/core/editor/app.gd"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 const BaseContainer = preload("res://addons/script_splitter/core/base/container.gd")
 
+var _last_tool : MickeyTool = null
 
 func execute(value : Variant = null) -> bool:
 	if value is Array:
@@ -25,8 +26,12 @@ func execute(value : Variant = null) -> bool:
 					for x : MickeyTool in _tool_db.get_tools():
 						if x.is_valid():
 							if x.get_root() == from and x.get_control().get_index() == index:
+								if _last_tool == x:
+									return false
+								_last_tool = x
 								x.ochorus(to)
 								_manager.clear_editors()
+								set_deferred(&"_last_tool", null)
 								return true
 			else:
 				if value[0] is String and value[1] is String and value[2] is bool:

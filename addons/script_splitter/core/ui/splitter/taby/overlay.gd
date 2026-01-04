@@ -22,6 +22,8 @@ var _container : Control = null
 
 var txt : TextureRect = null
 
+static var _busy : bool = false
+
 func _init() -> void:
 	visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -43,18 +45,39 @@ func start(ref : TabBar) -> void:
 	_update()
 	set_process(true)
 	
+func _reset() -> void:
+	for x : Node in Engine.get_main_loop().get_nodes_in_group(&"__SCRIPT_SPLITTER__"):
+		if get_parent() != x:
+			reparent(x)
+			break
+			
+static func _free() -> void:
+	var sc : SceneTree = Engine.get_main_loop()
+	if sc:
+		for __ : int in range(0, 5, 1):
+			await sc.process_frame
+			if !is_instance_valid(sc):
+				return
+		_busy = false
+	
 func stop(tab : TabBar = null) -> bool:
 	set_process(false)
 	visible = false
-	if is_instance_valid(tab) and tab == _ref:
-		var container : Node = _ref.get_parent()
-		if is_instance_valid(_container) and _container == container:
-			return get_global_rect().has_point(get_global_mouse_position())
+	if !_busy:
+		set_physics_process(true)
+		_busy = true
+		_free.call_deferred()
+		if is_instance_valid(tab) and tab == _ref:
+			var container : Node = _ref.get_parent()
+			if is_instance_valid(_container) and _container == container:
+				_container = null
+				return get_global_rect().has_point(get_global_mouse_position())
+	_container = null
 	return false
 	
-func get_container() -> Node:
+func get_container(ignore_self : bool = true) -> Node:
 	for x : Node in get_tree().get_nodes_in_group(&"__SC_SPLITTER__"):
-		if x == _container:
+		if ignore_self and x == _container:
 			continue
 		var root : Node = x.get_parent()
 		if root is Control:
@@ -67,6 +90,7 @@ func _ready() -> void:
 	color = Color.DARK_GREEN
 	
 	set_process(false)
+	set_physics_process(false)
 	visible = false
 	
 	txt = TextureRect.new()
@@ -91,6 +115,7 @@ func _update() -> void:
 					txt.global_position = get_global_rect().get_center() - (txt.texture.get_size() * 0.5)
 					if !visible:
 						visible = true
+					
 					return
 		
 		_fc = NORMAL
@@ -118,3 +143,11 @@ func _process(delta: float) -> void:
 		return
 	modulate.a = lerpf(_fc, _ec, _dt)
 	
+func resize() -> void:
+	if !is_inside_tree():
+		await tree_entered
+	position = Vector2.ZERO
+	reset_size()
+	size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	size_flags_vertical = Control.SIZE_EXPAND_FILL
+	#set_anchors_preset(Control.PRESET_FULL_RECT)

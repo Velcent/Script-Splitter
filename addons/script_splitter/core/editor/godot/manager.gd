@@ -198,7 +198,7 @@ func is_valid_item_index(index : int) -> bool:
 	return index > -1 and _base_list.item_count() > index and !_base_list.get_item_tooltip(index).is_empty() and !_base_list.get_item_text(index).is_empty()
 
 func update() -> bool:
-	if !_base_container.is_active():
+	if !_base_container.has_method(&"is_active") or !_base_container.is_active():
 		return false
 		
 	_task.update()

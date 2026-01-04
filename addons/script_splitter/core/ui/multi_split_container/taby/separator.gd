@@ -39,3 +39,22 @@ func _process(delta: float) -> void:
 			
 	if !is_queued_for_deletion():
 		queue_free()
+
+func _get_drag_data(__ : Vector2) -> Variant:
+	if !_ref:
+		return null
+	return _ref.owner.button_main._get_drag_data(__)
+	
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	if _ref:
+		_ref.owner.button_main._drop_data(_at_position, data)
+	
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	if !_ref:
+		return false
+	return _ref.owner.button_main._can_drop_data(at_position, data)
+
+func get_selected_color() -> Color:
+	if !_ref:
+		return Color.GRAY
+	return _ref.owner.get_selected_color()

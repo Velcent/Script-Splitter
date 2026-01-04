@@ -1,3 +1,4 @@
+@tool
 extends VBoxContainer
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #	Script Splitter
@@ -47,7 +48,8 @@ func _setup() -> void:
 func _ready() -> void:
 	_editor = Editor.new()
 	
-	set(&"theme_override_constants/separation", -12)
+	var iscale : int = -8
+	set(&"theme_override_constants/separation", iscale)
 	
 	tab = CONTAINER.instantiate()
 	tab.set_ref(_editor.get_tab_bar())
