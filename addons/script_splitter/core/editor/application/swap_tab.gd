@@ -1,5 +1,5 @@
 @tool
-extends "res://addons/script_splitter/core/editor/app.gd"
+extends "./../../../core/editor/app.gd"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #	Script Splitter
 #	https://github.com/CodeNameTwister/Script-Splitter
@@ -7,7 +7,7 @@ extends "res://addons/script_splitter/core/editor/app.gd"
 #	Script Splitter addon for godot 4
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-const BaseContainer = preload("res://addons/script_splitter/core/base/container.gd")
+const BaseContainer = preload("./../../../core/base/container.gd")
 
 var _last_tool : MickeyTool = null
 

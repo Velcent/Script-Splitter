@@ -8,7 +8,7 @@ extends Button
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-const SEPARATOR = preload("res://addons/script_splitter/core/ui/multi_split_container/taby/separator.tscn")
+const SEPARATOR = preload("./../../../../core/ui/multi_split_container/taby/separator.tscn")
 const DRAG_TIME : float = 0.15
 static var line : VSeparator = null
 
@@ -53,8 +53,7 @@ func _get_drag_data(__ : Vector2) -> Variant:
 	if !button_pressed:
 		pressed.emit()
 		
-	var c : Label = Label.new()
-	c.text = text
+	var c : Control = duplicate(0)
 	c.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	c.z_index = RenderingServer.CANVAS_ITEM_Z_MAX - 2
 	set_drag_preview(c)

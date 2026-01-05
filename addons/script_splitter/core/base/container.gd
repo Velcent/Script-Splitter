@@ -8,10 +8,10 @@ extends RefCounted
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-const SplitterContainer = preload("res://addons/script_splitter/core/ui/splitter/splitter_container.gd")
-const NControl = preload("res://addons/script_splitter/core/util/control.gd")
+const SplitterContainer = preload("./../../../script_splitter/core/ui/splitter/splitter_container.gd")
+const NControl = preload("./../../core/util/control.gd")
 
-const IoBar = preload("res://addons/script_splitter/core/ui/splitter/io/io_bar.gd")
+const IoBar = preload("./../../core/ui/splitter/io/io_bar.gd")
 
 signal update()
 signal focus_by_tab(root : TabContainer, index : int)

@@ -7,7 +7,7 @@ extends PanelContainer
 #	Script Splitter addon for godot 4
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-const TAB = preload("res://addons/script_splitter/core/ui/multi_split_container/taby/tab.tscn")
+const TAB = preload("./../../../../core/ui/multi_split_container/taby/tab.tscn")
 const TIME_WAIT : float = 0.35
 
 const MAX_COLLAPSED : int = 6

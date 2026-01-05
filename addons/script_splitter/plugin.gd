@@ -9,8 +9,8 @@ extends EditorPlugin
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
-const InputTool = preload("res://addons/script_splitter/core/Input.gd")
-const TWISTER_script_splitter = preload("res://addons/script_splitter/core/builder.gd")
+const InputTool = preload("core/Input.gd")
+const TWISTER_script_splitter = preload("core/builder.gd")
 var builder : TWISTER_script_splitter = null
 var handler : InputTool = null
 		

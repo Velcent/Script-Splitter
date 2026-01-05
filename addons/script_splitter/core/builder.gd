@@ -8,9 +8,9 @@ extends RefCounted
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-const EditorManager = preload("res://addons/script_splitter/core/editor/godot/manager.gd")
-const BaseContainer = preload("res://addons/script_splitter/core/base/container.gd")
-const BaseList = preload("res://addons/script_splitter/core/base/list.gd")
+const EditorManager = preload("./../core/editor/godot/manager.gd")
+const BaseContainer = preload("./../core/base/container.gd")
+const BaseList = preload("./../core/base/list.gd")
 
 var _plugin : EditorPlugin = null
 var _editor_manager : EditorManager = null

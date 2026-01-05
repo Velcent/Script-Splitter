@@ -7,8 +7,8 @@ extends VBoxContainer
 #	Script Splitter addon for godot 4
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-const Editor = preload("res://addons/script_splitter/core/ui/splitter/editor_container.gd")
-const CONTAINER = preload("res://addons/script_splitter/core/ui/multi_split_container/taby/container.tscn")
+const Editor = preload("./../../../core/ui/splitter/editor_container.gd")
+const CONTAINER = preload("./../../../core/ui/multi_split_container/taby/container.tscn")
 
 var _editor : Editor = null
 var _tab_old_behaviour : bool = false:

@@ -7,8 +7,8 @@ extends TabContainer
 #	Script Splitter addon for godot 4
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-const Dottab = preload("res://addons/script_splitter/core/ui/splitter/taby/dottab.gd")
-const CLOSE = preload("res://addons/script_splitter/assets/Close.svg")
+const Dottab = preload("./../../../core/ui/splitter/taby/dottab.gd")
+const CLOSE = preload("./../../../assets/Close.svg")
 
 const GLOBALS : PackedStringArray = ["_GlobalScope", "_GDScript"]
 

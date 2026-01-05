@@ -7,7 +7,7 @@ extends RefCounted
 #	Script Splitter addon for godot 4
 #	author:		"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-const SplitterList = preload("res://addons/script_splitter/core/ui/splitter/splitter_list.gd")
+const SplitterList = preload("./../../core/ui/splitter/splitter_list.gd")
 
 signal item_selected(item : int)
 signal move_item(from : int, to : int)
