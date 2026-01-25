@@ -24,7 +24,7 @@ const SwapTab = preload("./../../../core/editor/application/swap_tab.gd")
 const RmbMenu = preload("./../../../core/editor/application/rmb_menu.gd")
 const UserTabClose = preload("./../../../core/editor/application/user_tab_close.gd")
 const Io = preload("./../../../core/editor/application/io.gd")
-const CustomSplit = preload("uid://dgqwhcax1guja")
+const CustomSplit = preload("./../../../core/editor/application/custom_split.gd")
 
 const ToolDB = preload("./../../../core/editor/database/tool_db.gd")
 const Task = preload("./../../../core/editor/coroutine/task.gd")
